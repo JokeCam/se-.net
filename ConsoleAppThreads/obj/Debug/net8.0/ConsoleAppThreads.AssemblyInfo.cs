@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ConsoleAppThreads")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+329f8125c66ba7eb8325ac769a4fcbf682ed7572")]
 [assembly: System.Reflection.AssemblyProductAttribute("ConsoleAppThreads")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ConsoleAppThreads")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
