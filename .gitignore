@@ -3,6 +3,8 @@
 ################################################################################
 
 /ConsoleAppThreads/.vs/ConsoleAppThreads
-/ConsoleAppThreads/bin/Debug/net6.0
+/ConsoleAppThreads/bin
 /ConsoleAppThreads/obj
+/ConsoleAppAsyncMethods/bin
+/ConsoleAppAsyncMethods/obj
 .idea
