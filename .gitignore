@@ -3,3 +3,6 @@
 ################################################################################
 
 /ConsoleAppThreads/.vs/ConsoleAppThreads
+/ConsoleAppThreads/bin/Debug/net6.0
+/ConsoleAppThreads/obj
+.idea
