@@ -8,6 +8,10 @@ using Microsoft.VisualBasic;
 
 
 List<Task> tasks = new List<Task>(50);
+List<Task> noSyncParrallelTasks = new List<Task>(50);
+List<Task> lockSyncParrallelTasks = new List<Task>(50);
+List<Task> autoResetEventSyncParrallelTasks = new List<Task>(50);
+
 
 for (int i = 1; i < 11; i++)
 {
@@ -16,6 +20,13 @@ for (int i = 1; i < 11; i++)
             {
                 Worker.DoWorkNoSync("NO SYNC");
             })
+    );
+    
+    noSyncParrallelTasks.Add(
+        new Task(() =>
+        {
+            Worker.DoWorkNoSync("PARALLEL NO SYNC");   
+        })
     );
 }
 
@@ -27,6 +38,13 @@ for (int i = 1; i < 11; i++)
         Task.Factory.StartNew(() =>
         {
             Worker.DoWorkLockSync("LOCK SYNC");
+        })
+    );
+    
+    lockSyncParrallelTasks.Add(
+        new Task(() =>
+        {
+            Worker.DoWorkLockSync("PARALLEL LOCK SYNC");   
         })
     );
 }
@@ -41,9 +59,30 @@ for (int i = 1; i < 11; i++)
             Worker.DoWorkAutoResetEventSync("AutoResetEvent SYNC");
         })
     );
+    
+    autoResetEventSyncParrallelTasks.Add(
+        new Task(() =>
+        {
+            Worker.DoWorkAutoResetEventSync("PARALLEL AutoResetEvent SYNC");   
+        })
+    );
 }
 
 Task.WaitAll(tasks.ToArray());
+Console.WriteLine("All tasks are done, starting parallel tasks");
+Thread.Sleep(500);
+await RunParrallelTasks();
+
+async Task RunParrallelTasks()
+{
+    noSyncParrallelTasks.ForEach(t => t.Start());
+    lockSyncParrallelTasks.ForEach(t => t.Start());
+    autoResetEventSyncParrallelTasks.ForEach(t => t.Start());
+    await Task.WhenAll(noSyncParrallelTasks);
+    await Task.WhenAll(lockSyncParrallelTasks);
+    await Task.WhenAll(autoResetEventSyncParrallelTasks);
+}
+
 
 public class Worker
 {
