@@ -7,4 +7,6 @@
 /ConsoleAppThreads/obj
 /ConsoleAppAsyncMethods/bin
 /ConsoleAppAsyncMethods/obj
+/ConsoleAppCSVFileToDatabase/bin
+/ConsoleAppCSVFileToDatabase/obj
 .idea
